@@ -18,7 +18,7 @@
         <p id="articleSummary"></p>
     </div>
 
-    <script>
+   <script>
         // Generate a random Wikipedia article summary
         function generateRandomArticleSummary() {
             var randomAPI = "https://en.wikipedia.org/api/rest_v1/page/random/summary";
@@ -29,8 +29,16 @@
                     var title = data.title;
                     var extract = data.extract;
 
-                    document.getElementById("articleTitle").textContent = title;
-                    document.getElementById("articleSummary").textContent = extract;
+                    // Fetch a more detailed extract using the full article API
+                    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`)
+                        .then(response => response.json())
+                        .then(articleData => {
+                            var detailedExtract = articleData.extract;
+
+                            document.getElementById("articleTitle").textContent = title;
+                            document.getElementById("articleSummary").textContent = detailedExtract;
+                        })
+                        .catch(error => console.error(error));
                 })
                 .catch(error => console.error(error));
         }
@@ -38,6 +46,5 @@
         // Call the function to generate the random article summary
         generateRandomArticleSummary();
     </script>
-
 </body>
 </html>
