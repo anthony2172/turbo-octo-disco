@@ -13,23 +13,29 @@
 
 <p>This is a website for cool things. And this is a test!</p>
 
-<p>Check out <a id="randomLink" href="#" target="_blank">this Wikipedia article</a> to learn more about a random topic.</p>
+<div id="randomArticle"></div>
 
     <script>
-        // Generate a random Wikipedia article link
-        function generateRandomArticleLink() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1;
-            var day = date.getDate();
+        // Generate a random Wikipedia article summary
+        function generateRandomArticleSummary() {
+            var randomAPI = "https://en.wikipedia.org/api/rest_v1/page/random/summary";
 
-            var randomURL = "https://en.wikipedia.org/wiki/Special:RandomInCategory/Category:All_" + year + "_establishments_in_the_United_States";
+            fetch(randomAPI)
+                .then(response => response.json())
+                .then(data => {
+                    var extract = data.extract;
 
-            document.getElementById("randomLink").href = randomURL;
+                    var articleContent = `
+                        <p>${extract}</p>
+                    `;
+
+                    document.getElementById("randomArticle").innerHTML = articleContent;
+                })
+                .catch(error => console.error(error));
         }
 
-        // Call the function to generate the random link
-        generateRandomArticleLink();
+        // Call the function to generate the random article summary
+        generateRandomArticleSummary();
     </script>
 
 </body>
