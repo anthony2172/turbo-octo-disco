@@ -6,3 +6,9 @@ h1 {
     font-family: "Helvetica", sans-serif;
     font-size: 72px; /* Adjust the value to make the font larger */
 }
+.wikipedia-link {
+    font-family: "Helvetica", sans-serif; /* Change to your preferred font */
+    font-size: 14px; /* Change to your preferred font size */
+    color: #007bff; /* Change to your preferred link color */
+    text-decoration: none; /* Remove underline from the link */
+}
