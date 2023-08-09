@@ -13,7 +13,10 @@
 
 <p>This is a website for cool things. And this is a test!</p>
 
-<div id="randomArticle"></div>
+<div id="randomArticle">
+        <h2 id="articleTitle"></h2>
+        <p id="articleSummary"></p>
+    </div>
 
     <script>
         // Generate a random Wikipedia article summary
@@ -23,13 +26,11 @@
             fetch(randomAPI)
                 .then(response => response.json())
                 .then(data => {
+                    var title = data.title;
                     var extract = data.extract;
 
-                    var articleContent = `
-                        <p>${extract}</p>
-                    `;
-
-                    document.getElementById("randomArticle").innerHTML = articleContent;
+                    document.getElementById("articleTitle").textContent = title;
+                    document.getElementById("articleSummary").textContent = extract;
                 })
                 .catch(error => console.error(error));
         }
