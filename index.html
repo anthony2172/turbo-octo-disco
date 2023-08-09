@@ -17,7 +17,7 @@
         <h2 id="articleTitle"></h2>
         <p id="articleSummary"></p>
     </div>
-    <p>Content sourced from <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.</p>
+    <p>Content sourced from <a id="wikipediaLink" href="#" target="_blank">Wikipedia</a>.</p>
 
     <script>
         // Generate a random Wikipedia article summary
@@ -32,6 +32,10 @@
 
                     document.getElementById("articleTitle").textContent = title;
                     document.getElementById("articleSummary").textContent = extract;
+
+                    // Update the Wikipedia link with the actual article URL
+                    var wikipediaLink = document.getElementById("wikipediaLink");
+                    wikipediaLink.href = `https://en.wikipedia.org/wiki/${title.replace(/ /g, "_")}`;
                 })
                 .catch(error => console.error(error));
         }
