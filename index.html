@@ -13,5 +13,24 @@
 
 <p>This is a website for cool things. And this is a test!</p>
 
+<p>Check out <a id="randomLink" href="#" target="_blank">this Wikipedia article</a> to learn more about a random topic.</p>
+
+    <script>
+        // Generate a random Wikipedia article link
+        function generateRandomArticleLink() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+
+            var randomURL = "https://en.wikipedia.org/wiki/Special:RandomInCategory/Category:All_" + year + "_establishments_in_the_United_States";
+
+            document.getElementById("randomLink").href = randomURL;
+        }
+
+        // Call the function to generate the random link
+        generateRandomArticleLink();
+    </script>
+
 </body>
 </html>
