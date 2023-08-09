@@ -8,6 +8,11 @@ header {
     padding: 1rem;
 }
 
+body {
+    background-color: lightgray;
+}
+
+
 /* Style the navigation */
 nav {
     background-color: #444;
